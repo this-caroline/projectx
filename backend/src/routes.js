@@ -9,11 +9,13 @@ const jwt = require('jsonwebtoken');
 
 const isAuth = (req, res, next) => {
     try {
-        const token = req.headers.token;
-        if (!token) return res.status(401).json({
+        const data = req.headers["authorization"]
+        if (!data) return res.status(401).json({
             success: false,
-            message: 'Unable to authenticate'
+            message: 'authentication is mandatory'
         })
+
+        const token = data.split(" ")[1];
         const user  = jwt.verify(token, process.env.SECRET_KEY);
         req.userId = user.userId
         req.email = user.email

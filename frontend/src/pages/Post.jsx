@@ -30,14 +30,15 @@ class Post extends Component {
 			const data = {
             filename: this.state.filename,
 			mimeType: this.state.mimeType,
-            userId: "1"
 		}
-		api.post('/content', data)
+		api.post('/content', data, { headers: {
+            'Authorization': localStorage.getItem('token')
+        }})
 		.then(res => {
             this.props.history.push("/List")
 		})
 		.catch(error => {
-			this.setState({ error: "Erro ao postar"})
+            this.props.history.push("/")
 		});
 	}
 
@@ -62,7 +63,7 @@ class Post extends Component {
                         <div class="invalid-tooltip">
                             Favor adicionar informações a postagem.
                     </div>
-                    {this.state.error && <Form.Text id="passwordHelpBlock" muted>'Email ou senha inválida'</Form.Text> }
+                    {this.state.error && <Form.Text id="passwordHelpBlock" muted>'Erro ao enviar post, tente novamente mais tarde'</Form.Text> }
                     <Button type="submit"
                         onClick={this.onSubmit}>Salvar Post</Button>
                     </Card.Body>

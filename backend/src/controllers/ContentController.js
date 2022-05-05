@@ -3,8 +3,8 @@ const User = require('../models').User;
 
 module.exports = {
   async store (req, res) {
-    const { filename, mimeType, userId } = req.body;
-
+    const { filename, mimeType } = req.body;
+    const userId = req.userId
     try {
       const content = await Content.create({ filename, mimeType, userId });
 
@@ -36,7 +36,7 @@ module.exports = {
 
       content.filename = filename;
       content.mimeType = mimeType;
-      content.UserId = UserId;
+      content.UserId =  req.userId;
 
       await content.save();
 

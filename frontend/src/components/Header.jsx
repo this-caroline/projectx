@@ -15,7 +15,7 @@ const Header = () => {
             </NavLink>
             <NavLink
               exact
-              to="/List"
+              to="/Logout"
               className="nav-link"
               activeClassName="active"
             >

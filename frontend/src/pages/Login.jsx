@@ -3,7 +3,6 @@ import api from '../services/api';
 import {  Card,Form, Label, FormGroup, Button, Checkbox, Modal } from 'react-bootstrap'
 
 class Login extends Component{
-	// eslint-disable-next-line no-useless-constructor
 	constructor(props){
 		super(props);
 	
@@ -58,8 +57,7 @@ render(){
 				 placeholder="email@email.com"
 				 onChange={ e => {
 					this.setState(
-						{'email': e.target.value},
-						() => console.log(this.state));
+						{'email': e.target.value});
 				}}
 				 />
 				<Form.Control
@@ -67,8 +65,7 @@ render(){
 					id="password"
 					onChange={ e => {
 						this.setState(
-							{'password': e.target.value},
-							() => console.log(this.state));
+							{'password': e.target.value});
 					}}
 					style={{height:'40px', lineHeight:'20px'}}
 				/>
