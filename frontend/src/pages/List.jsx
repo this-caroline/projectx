@@ -10,13 +10,17 @@ class List extends React.Component{
       },
     }
     componentDidMount(){
-        api.get('/content').then(response => {
+        api.get('/content', { headers: {
+          'Authorization': localStorage.getItem('token')
+      }}).then(res => {
              this.setState({
               content:{
-                data: response.data
+                data: res.data
               }
              })
-			  });
+			  }).catch( e =>{
+            this.props.history.push("/")
+        });
     }
 
     handleClick = (e) => {
