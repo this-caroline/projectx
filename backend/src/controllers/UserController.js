@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 const Content = require('../models').Content;
 const User = require('../models').User;
+const bcrypt = require('bcrypt');
 
 module.exports = {
   async store (req, res) {
@@ -12,17 +13,17 @@ module.exports = {
   
     const user = await User.findOne({ where: { email } });
 
-    if(user){
-      return res.status(400).json({
+    if(user) return res.status(400).json({
         success: false,
         message: 'Email already in use.'
       });
-    }
+    
     try {
+      const hashedPassword = await bcrypt.hash(password, 10);
       const content = await User.create({
         name,
         email,
-        password,
+        password: hashedPassword,
       });
       if (!content) throw new Error();
 

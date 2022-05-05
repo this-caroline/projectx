@@ -24,6 +24,7 @@ module.exports = {
         token,
       });
     }
+    
     return res.status(401).send({
       success: false,
       message: 'Invalid credentials.'
