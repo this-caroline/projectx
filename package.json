@@ -1,4 +1,5 @@
 {
+  "main": "./src/index.js",
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
