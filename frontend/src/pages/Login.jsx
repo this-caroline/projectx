@@ -27,6 +27,10 @@ class Login extends Component{
 		})
 	}
 
+	redirect= async () => { 
+		this.props.history.push("/SignUp")
+	}
+
 	onButton= async () => { 
 		const data = {
 			password: this.state.password,
@@ -47,7 +51,7 @@ class Login extends Component{
 render(){
     return(
 	<React.Fragment>
-		<Card  style={{ alignItems: 'center'}} className="text-center" >
+		<Card style={{ alignItems: 'center'}} className="text-center" >
   			<Card.Header >Project X</Card.Header>
 			<Card.Body className="text-center" >
 				<Card.Title>Login</Card.Title>
@@ -71,8 +75,9 @@ render(){
 				/>
 				<br/>
 				{this.state.error.login && <Form.Text id="passwordHelpBlock" muted>'Email ou senha inválida'</Form.Text> }
-				<Button type='submit' onClick={this.onButton} value="Logar" >Login</Button>
-	  		
+				<Button variant="outline-primary" onClick={this.onButton} value="Logar" >Login</Button>
+				<Button  variant="link" onClick={this.redirect} value="Logar" >Criar Conta</Button>
+
   			</Card.Body>
 	</Card>
 </React.Fragment>

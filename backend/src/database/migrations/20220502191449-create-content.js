@@ -14,6 +14,9 @@ module.exports = {
       mimeType: {
         type: Sequelize.STRING
       },
+      data: {
+        type: Sequelize.STRING
+      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,

@@ -18,8 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     filename: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
+    // data: {
+    //   type: DataTypes.STRING(255),
+    //   allowNull: false
+    // },
     mimeType: {
       type: DataTypes.STRING(255),
       allowNull: true
@@ -32,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
+    
     createdAt: {
       allowNull: true,
       type: DataTypes.DATE,

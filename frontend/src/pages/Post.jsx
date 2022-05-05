@@ -34,12 +34,12 @@ class Post extends Component {
 		api.post('/content', data, { headers: {
             'Authorization': localStorage.getItem('token')
         }})
-		.then(res => {
-            this.props.history.push("/List")
-		})
-		.catch(error => {
-            this.props.history.push("/")
-		});
+            .then(res => {
+                this.props.history.push("/List")
+            })
+            .catch(error => {
+                this.props.history.push("/")
+            });
 	}
 
     render() {
