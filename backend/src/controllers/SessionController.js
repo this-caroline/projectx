@@ -8,10 +8,9 @@ module.exports = {
     const { email, password } = req.body;
 
     const user = await User.findOne({ where: { email } });
-
     if (user && await bcrypt.compare(password, user.password)) {
       const token = jwt.sign(
-        { userId: user.id, email: user.email },
+        { userId: user.id, email: user.email, isAdmin: user.admin },
         process.env.SECRET_KEY,
         { expiresIn: 86400000 },
       );
