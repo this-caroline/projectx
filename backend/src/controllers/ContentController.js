@@ -55,7 +55,19 @@ module.exports = {
 
   async index (req, res) {
     try {
-      const content = await Content.findAll();
+      if(req.isAdmin) {
+        const allContent = await Content.findAll()
+        return res.status(200).json({
+          success: true,
+          data: allContent || [],
+        }) 
+      };
+
+      const content = await Content.findAll({
+        where: {
+          userId: req.userId
+        }
+      });
 
       return res.status(200).json({
         success: true,

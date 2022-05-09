@@ -9,6 +9,7 @@ module.exports = {
       name,
       email,
       password,
+      admin
     } = req.body;
   
     const user = await User.findOne({ where: { email } });
@@ -24,6 +25,7 @@ module.exports = {
         name,
         email,
         password: hashedPassword,
+        admin
       });
       if (!content) throw new Error();
 

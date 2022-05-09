@@ -19,6 +19,7 @@ const isAuth = (req, res, next) => {
         const user  = jwt.verify(token, process.env.SECRET_KEY);
         req.userId = user.userId
         req.email = user.email
+        req.isAdmin = user.isAdmin
         next()
     }catch(e){
         return res.status(401).json({
