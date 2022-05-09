@@ -17,7 +17,7 @@ module.exports = {
     if(user) return res.status(400).json({
         success: false,
         message: 'Email already in use.'
-      });
+    });
     
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -65,4 +65,48 @@ module.exports = {
     }
   },
 
+  async update (req, res) {
+    const { id } = req.params;
+    const {
+      name,
+      email,
+      password,
+      admin
+    } = req.body;
+
+    if(email){
+      const checkEmail = await User.findOne({ where: { email } });
+
+      if (checkEmail) return res.status(400).json({
+        success: false,
+        message: 'Email already in use.'
+    })
+}
+
+    try {
+      const user = await User.findByPk(id);
+
+      if (!user) throw new Error();
+
+      user.name = name || user.name;
+      user.email = email || user.email;
+      user.admin = admin || user.admin;
+      if(password){
+        const hashedPassword = await bcrypt.hash(password, 10);
+        user.password = hashedPassword;
+      }
+
+      await user.save();
+      return res.status(200).json({
+        success: true,
+        data: user
+      });
+    } catch (error) {
+      return res.status(error.status || 500).json({
+        success: false,
+        message: error.message ||
+          'Internal error'
+      });
+    }
+  }
 };

@@ -37,6 +37,7 @@ Router.post('/session', SessionController.store);
 //unicidade do login e email.Router.post('/user', AppointmentController.store);
 Router.post('/user', UserController.store);
 Router.get('/user', isAuth, UserController.index);
+Router.patch('/user/:id', isAuth, UserController.update);
 
 //deve ser capaz de publicar conteúdos textuais, imagens ou videos no seu próprio perfil. P
 Router.post('/user/:user_id/content', isAuth);
