@@ -6,7 +6,7 @@ import List from './pages/List';
 import Post from './pages/Post';
 import Logout from './pages/Logout';
 import SignUp from './pages/SignUp';
-
+import UpdateUser from './pages/UpdateUser'
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
       <Route  path="/Post" exact render={props=> (<Post{...props}/>)}/>
       <Route  path="/Logout" exact render={props=> (<Logout{...props}/>)}/>
       <Route  path="/SignUp" exact render={props=> (<SignUp{...props}/>)}/>
+      <Route  path="/UpdateUser" exact render={props=> (<UpdateUser{...props}/>)}/>
     </Switch>
   </BrowserRouter>
   );

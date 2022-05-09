@@ -40,6 +40,7 @@ class Login extends Component{
 		.then(res => {
 			if(res?.status === 200){
 				localStorage.setItem('token', res.data.token);
+				localStorage.setItem('id', res.data.id);
 				this.props.history.push("/List")
 			}
 		})

@@ -15,6 +15,14 @@ const Header = () => {
             </NavLink>
             <NavLink
               exact
+              to="/UpdateUser"
+              className="nav-link"
+              activeClassName="active"
+            >
+              Atualizar Perfil
+            </NavLink>
+            <NavLink
+              exact
               to="/Logout"
               className="nav-link"
               activeClassName="active"

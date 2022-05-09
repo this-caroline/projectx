@@ -90,7 +90,7 @@ module.exports = {
 
       user.name = name || user.name;
       user.email = email || user.email;
-      user.admin = admin || user.admin;
+      user.admin = admin;
       if(password){
         const hashedPassword = await bcrypt.hash(password, 10);
         user.password = hashedPassword;
